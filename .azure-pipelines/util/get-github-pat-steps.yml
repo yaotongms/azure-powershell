@@ -6,5 +6,6 @@ steps:
     Inline: |
       $GithubToken = Get-AzKeyVaultSecret -VaultName $(GithubPATKeyVaultName) -Name $(GithubPATKeyVaultAccount) -AsPlainText
       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
+      $Error
     azurePowerShellVersion: 'LatestVersion'
   displayName: Get Github PAT from Key Vault

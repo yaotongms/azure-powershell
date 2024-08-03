@@ -1,0 +1,7 @@
+jobs:
+- job:
+  displayName: Test get github pat
+  pool: pool-windows-2019
+
+  steps:
+  - template: util/get-github-pat-steps.yml
