@@ -1,11 +1,12 @@
 steps:
 - task: AzurePowerShell@5
+  displayName: Get Github PAT from Key Vault
   inputs:
+    azurePowerShellVersion: 'LatestVersion'
     azureSubscription: '$(AzureSubscription)'
+    pwsh: true
     ScriptType: 'InlineScript'
     Inline: |
+      Write-Host "Trying to get key vault"
       $GithubToken = Get-AzKeyVaultSecret -VaultName $(GithubPATKeyVaultName) -Name $(GithubPATKeyVaultAccount) -AsPlainText
-      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-      $Error
-    azurePowerShellVersion: 'LatestVersion'
-  displayName: Get Github PAT from Key Vault
+      Write-Host "Got key vault $GithubToken"
