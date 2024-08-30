@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 8.4.0
 * Added `EnableResilientVMCreate` and `EnableResilientVMDelete` parameters to `Update-AzVmss` and `New-AzVmssConfig` cmdlets for enhanced VM resilience options.
 
 ## Version 8.3.0
