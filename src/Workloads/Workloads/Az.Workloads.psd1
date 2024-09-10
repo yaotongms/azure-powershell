@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.1'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -142,7 +142,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed secrets exposure in example documentation.'
+        ReleaseNotes = '* Split Az.Workloads into two sub-modules'
 
         # Prerelease string of this module
         # Prerelease = ''
