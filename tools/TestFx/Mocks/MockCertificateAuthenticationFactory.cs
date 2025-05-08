@@ -102,5 +102,30 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public AuthenticationTelemetryData GetDataForTelemetry(string requestId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone); ;
+        }
+
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IDictionary<string, object> optionalParameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

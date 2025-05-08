@@ -412,8 +412,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// Remove a user from token cache.
         /// </summary>
         /// <param name="account"></param>
-        /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
-        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        /// <param name="environment"></param>
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
         {
             if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
             {
@@ -620,6 +620,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        /// <summary>
+        /// Remove a user from token cache.
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            RemoveUser(account, environment: null);
         }
     }
 }

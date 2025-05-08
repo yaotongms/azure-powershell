@@ -125,5 +125,42 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IDictionary<string, object> optionalParameters)
+        {
+            if (account.Id == null)
+            {
+                account.Id = "MockAccount";
+            }
+
+            if (TokenProvider == null)
+            {
+                return new MockAccessToken()
+                {
+                    AccessToken = account.Id,
+                    LoginType = LoginType.OrgId,
+                    UserId = account.Id
+                };
+            }
+            else
+            {
+                return TokenProvider(account, environment as AzureEnvironment, tenant);
+            }
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

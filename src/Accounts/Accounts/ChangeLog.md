@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
