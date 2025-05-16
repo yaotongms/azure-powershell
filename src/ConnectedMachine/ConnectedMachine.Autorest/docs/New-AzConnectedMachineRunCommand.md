@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to create or update a run command.
+The operation to create a run command.
 
 ## SYNTAX
 
@@ -89,7 +89,7 @@ New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-The operation to create or update a run command.
+The operation to create a run command.
 
 ## EXAMPLES
 

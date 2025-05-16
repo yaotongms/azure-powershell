@@ -52,6 +52,7 @@ function setupEnv() {
     $env.PerimeterName = 'a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation'
     $env.LicenseResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myLicense'
     $env.LicenseResourceIdProfile = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/edyoung/providers/Microsoft.HybridCompute/licenses/myLicense' 
+    $env.Publisher = 'microsoft.azure.monitor'
 
     #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 

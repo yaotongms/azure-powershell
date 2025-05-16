@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedLicenseProfile
 
 ## SYNOPSIS
-The operation to create or update a license profile.
+The operation to create a license profile.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-The operation to create or update a license profile.
+The operation to create a license profile.
 
 ## EXAMPLES
 
