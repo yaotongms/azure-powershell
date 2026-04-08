@@ -1,48 +1,55 @@
 ---
 external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
-online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationstore
+online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationreplica
 schema: 2.0.0
 ---
 
-# Remove-AzAppConfigurationStore
+# Remove-AzAppConfigurationReplica
 
 ## SYNOPSIS
-Deletes a configuration store.
+Deletes a replica.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzAppConfigurationReplica -ConfigStoreName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityConfigurationStore
+```
+Remove-AzAppConfigurationReplica -Name <String> -ConfigurationStoreInputObject <IAppConfigurationIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzAppConfigurationReplica -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a configuration store.
+Deletes a replica.
 
 ## EXAMPLES
 
-### Example 1: Remove an app configuration store
+### Example 1: Remove a replica of an app configuration store
 ```powershell
-Remove-AzAppConfigurationStore -Name azpstestappstore -ResourceGroupName azpstest-gp
+Remove-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica
 ```
 
-This command removes an app configuration store.
+This command removes the specified replica from an app configuration store.
 
-### Example 2: Remove an app configuration store
+### Example 2: Remove a replica of an app configuration store by pipeline
 ```powershell
-Get-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp | Remove-AzAppConfigurationStore
+Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica | Remove-AzAppConfigurationReplica
 ```
 
-This command removes an app configuration store.
+This command removes a replica by piping the output of Get-AzAppConfigurationReplica.
 
 ## PARAMETERS
 
@@ -58,6 +65,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigStoreName
+The name of the configuration store.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationStoreInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: DeleteViaIdentityConfigurationStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -93,12 +130,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the configuration store.
+The name of the replica.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases:
+Parameter Sets: Delete, DeleteViaIdentityConfigurationStore
+Aliases: ReplicaName
 
 Required: True
 Position: Named
