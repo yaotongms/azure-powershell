@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated preannouncement breaking changes date to May 2026.
 * Optimized cluster registration, significantly reducing registration time on large clusters.
 
 ## Version 2.6.6
